@@ -1,0 +1,16 @@
+<%
+#locals
+file ||= @file
+%>
+<div class="titleB">Upload new file</div>
+
+<%= error_messages_for :file %>
+<% form_for :file, :url => depot_files_path, :html => {:id => "settings", :method => "post"} do |f| -%>
+  <fieldset>
+    <div class="fields">
+      <p><label for="file_title">File title</label><%= f.text_field :title, :class=>"fieldbox wide" %></p>
+      <p><label for="file_description">File description</label><%= f.text_area :description, :class=>"fieldbox wide" %></p>
+    </div>
+  </fieldset>
+  <div class="actions"><%= submit_tag 'Upload', :class => 'button mainaction' %></div>
+<% end -%>
