@@ -16,18 +16,40 @@
 
 class Depot::File < ActiveRecord::Base
 
-set_table_name :files
+# set_table_name :files
 
   acts_as_commentable
   acts_as_taggable
   seo_urls
-  
-  belongs_to :users
-
-#####hasta aqui 13/11/2008
-
+ 
+  belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
+ 
+  has_attachment :storage => :file_system,
+                 :max_size => 5000.kilobytes,
+                 :path_prefix=>'public/system/files'
+  validates_as_attachment
+	
+	attr_accessible :title, :description, :tag_list, :published
 
   validates_presence_of :title
+
+  acts_as_state_machine :initial => :draft
+
+  state :draft
+  state :published
+
+  event :published do
+    transitions :from => [:draft] , :to => :published
+  end
+
+  event :draft do
+    transitions :from => [:published] , :to => :draft
+  end
+
+
+  def owner
+    user
+  end
 
 end
 

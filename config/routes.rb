@@ -4,18 +4,15 @@
 # resources :tog_depot
 
 namespace(:depot) do |depot|
-  depot.resources :files, :path_prefix => "" do |file|
-    file.resources :files
-  end
+  depot.resources :files
+  depot.resources :files, :collection => {:tags => :get}
 end
 
-
 namespace(:member) do |member| 
-	namespace(:depot) do |depot|
-		depot.resources :files, :path_prefix => "" do |file|
-			file.resources :files
-		end
-	end
+   member.namespace(:depot) do |depot|
+      depot.resources :files
+      depot.resources :files, :collection => {:tags => :get}
+   end
 end
 
 

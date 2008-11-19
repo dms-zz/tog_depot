@@ -4,11 +4,11 @@
 
 
 
-<p><%= link_to 'Upload new file', {:action => 'new'}, :class => 'button add' %></p>
+<p><%= link_to 'Upload new file', new_member_depot_file_url, :class => 'button add' %></p>
 
 
 <div class="portlet portletB">
-    <h2><span>Files</span></h2>
+    <h2><span>My Files </span></h2>
 
     <div class="portlet_content"> 
         <ul>
@@ -17,7 +17,19 @@
           <% else %>
               <% @my_files.each do |file| %>
                 <li class="clearfix">
-                  <%= file.title %> </li>
+                  <h4><%= file.title %></h4>
+                <p>
+                  <% tags = file.tag_list %>
+                  Tags:
+                  <% if !tags.blank? %>
+                    <% for tag in tags %>
+                      <%= link_to tag, tags_member_depot_files_url(:tag => tag, :user => file.user_id) %>
+                    <% end %>
+                  <% else %>
+                    No tags.
+                  <% end %>
+                </p>
+                </li>
               <% end %>
           <% end %> 
         </ul>
