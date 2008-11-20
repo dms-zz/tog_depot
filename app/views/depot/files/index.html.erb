@@ -2,11 +2,6 @@
   tag_cloud_files
 <% end %>
 
-
-
-<p><%= link_to 'Upload new file', {:action => 'new'}, :class => 'button add' %></p>
-
-
 <div class="portlet portletB">
     <h2><span>Files</span></h2>
 
@@ -17,9 +12,24 @@
           <% else %>
               <% @files.each do |file| %>
                 <li class="clearfix">
-                  <%= file.title %> </li>
+                  <h4>
+                  	<%= link_to file.title, depot_file_path(file.id) %>
+                  </h4>
+                  <p>
+                  <% tags = file.tag_list %>
+                  Tags:
+                  <% if !tags.blank? %>
+                    <% for tag in tags %>
+                      <%= link_to tag, tags_member_depot_files_url(:tag => tag, :user => file.user_id) %>
+                    <% end %>
+                  <% else %>
+                    No tags.
+                  <% end %>
+                </p>
+                </li>
               <% end %>
           <% end %> 
         </ul>
     </div>    
 </div>
+

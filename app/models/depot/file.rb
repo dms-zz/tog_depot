@@ -21,13 +21,13 @@ class Depot::File < ActiveRecord::Base
   acts_as_commentable
   acts_as_taggable
   seo_urls
- 
+
   belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
  
   has_attachment :storage => :file_system,
                  :max_size => 5000.kilobytes,
                  :path_prefix=>'public/system/files'
-  validates_as_attachment
+#  validates_as_attachment
 	
 	attr_accessible :title, :description, :tag_list, :published
 

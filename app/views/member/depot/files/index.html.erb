@@ -17,8 +17,12 @@
           <% else %>
               <% @my_files.each do |file| %>
                 <li class="clearfix">
-                  <h4><%= file.title %></h4>
-                <p>
+                  <h4>
+                  	<%= link_to file.title, edit_member_depot_file_url(file.id) %>
+                  </h4>
+
+                  <p><%= file.filename %></p> 
+                  <p>
                   <% tags = file.tag_list %>
                   Tags:
                   <% if !tags.blank? %>

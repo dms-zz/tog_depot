@@ -1,0 +1,6 @@
+<h1><%= @file.title%></h1>
+<p><%= @file.description%></p>
+<p>Created at: <%= @file.created_at%>
+<p>Updated at: <%= @file.updated_at%></p>
+<h1><%= link_to "Download", @file.public_filename %></h1>
+
