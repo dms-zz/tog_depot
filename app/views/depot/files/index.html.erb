@@ -1,21 +1,38 @@
-<% content_for :sidebar do %>
-  tag_cloud_files
-<% end %>
-
 <div class="portlet portletB">
-    <h2><span>Files</span></h2>
+<%= link_to "Upload new file", {:class => "add button", :title => "Upload new file"} %><br /><br />
+    <h2><span>Public files</span></h2>
 
-    <div class="portlet_content"> 
-        <ul>
+    <div class="portlet_content">
+        <table width="500">
+                 <thead>
+                  <tr bgcolor="#eeeeee">
+                  <th>Selected</th>
+                  <th>Type</th>
+                  <th>Filename</th>
+                  <th>Release date</th>
+                  <th>Member/Community</th>
+                  <th>Times dl</th>
+                  <th>In folder</th>
+                  <th>Vis.</th>
+                  </tr>
+                 </thead>
+                 <tbody>
+                 
           <% if @files.empty? %>
-            <li class="clearfix">There isn't any files yet.
+            <tr><td>There isn't any files yet.
           <% else %>
-              <% @files.each do |file| %>
-                <li class="clearfix">
-                  <h4>
-                  	<%= link_to file.title, depot_file_path(file.id) %>
-                  </h4>
-                  <p>
+             <% @files.each do |file| %>
+                <tr>
+                 <td><input type="checkbox" /></td>
+                 <td><img src="/tog_depot/images/iconset/genericGray.ico" border="0" height="16" width="16"/> 
+                 </td>
+                 <td>
+								 <%= link_to file.title, depot_file_path(file.id) %>
+                  </td>
+                  </tr>
+                  <tr><td></td><td></td>
+                 <td colspan="6">
+                  
                   <% tags = file.tag_list %>
                   Tags:
                   <% if !tags.blank? %>
@@ -25,11 +42,14 @@
                   <% else %>
                     No tags.
                   <% end %>
-                </p>
-                </li>
-              <% end %>
+                 
+                </td>
+               </tr>
+             <% end %>
           <% end %> 
-        </ul>
+        </tbody>
+        </table>
+        <div class="list_footer" style="vertical-align:middle; padding-left:4px; border-top:none; border-left:1px solid #ccc; border-right:1px solid #ccc; border-bottom:1px solid #ccc; background-color:#eee;"><div class="floater_L" style="float:left;">328 file(s)</div><div class="floater_R" style="float:right; padding-right:4px;"><img src="/tog_core/images/ico/arrow-left-blue-small.gif" border="0" /> Showing 1 / 290 <img src="/tog_core/images/ico/arrow-right-blue-small.gif" border="0" /></div><div class="float_breaker" style="clear:both;"></div></div>
     </div>    
 </div>
 
