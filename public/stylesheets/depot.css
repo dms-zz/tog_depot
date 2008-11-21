@@ -1,0 +1,42 @@
+.no_margins{}
+.floater_L{}
+.floater_R{}
+.float_breaker{}
+#file_overview{}
+
+/*++++++++++++++  TABLE [Override TOG_core style]  +++++++++++++++*/
+table{
+    width: 100%;
+    border: 0;
+    border-collapse: separate;
+    border: 1px solid #d1d1d1;
+}
+    table caption {
+        background-color: #edf3fd;
+        color: #dd4171;
+        font-weight: bold;
+        font-size: 1.1em;
+        text-align: left;
+        padding: 0px 0px;
+        border-right: 1px solid #d1d1d1;
+        border-left: 1px solid #d1d1d1;
+    }
+    table th, table td {
+        padding: 0px;
+        border-top: none;
+        border-bottom: none;
+    }
+		
+    table th img, table td img {
+        vertical-align: middle;
+    }
+    table th {
+        text-align: left;
+        font-weight: normal;
+        color: #636f7d;
+        background-color: inherit;
+    }
+    table tr.pair {
+        background: #edf3fd;
+        color: inherit;
+    }
