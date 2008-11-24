@@ -1,11 +1,25 @@
 <% include_stylesheet "/tog_depot/stylesheets/depot" %>
 <% content_for :sidebar do %>
+<ul class="tags">
+<li class="l5">
+<%= link_to 'Edit metadata', edit_member_depot_file_url(@file.id) %>
+</li>
+<li class="l5">
+<%= link_to 'Update archive',  new_member_depot_file_url %> 
+</li>
+<li class="l5">
+<%= link_to 'Change visibility', edit_member_depot_file_url(@file.id) %>
+</li>
+<li class="l5">
+<%= link_to 'Delete' %>
+</li>
+</ul>
 <% end %>
 
 
 <div id="file_overview">
  <div class="floater_L">
- <div class="fileicon_48"><img src="/tog_depot/images/1px.gif" border="0" height="26" width="5"/><br />EXT</div> 
+ <div class="fileicon_48"><img src="/tog_depot/images/1px.gif" border="0" height="26" width="5"/><br /><%= @extension %></div> 
  </div>
  <div class="floater_R">
  <h1><img src="/tog_depot/images/1px.gif" border="0" height="28" width="5"/><br /><%= @file.title %><h1>
@@ -20,6 +34,7 @@
    <b>Type:</b><br />
    <b>Uploaded by:</b><br />   
    <b>Times downloaded:</b>
+   <b>Visibility:</b>
   </p>
   <p>
    <b>Description:</b>
@@ -35,7 +50,7 @@
   </div>
   <div style="clear:both;" class="float_breaker"></div><br />
 
- <%= link_to "&lt;&lt; Back to public files list", "/depot/files"  %>
+<%= link_to '&lt;&lt; Back to public files list     ----->>cambiar',  member_depot_files_path %> 
 </div>
 
 

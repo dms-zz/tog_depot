@@ -4,6 +4,11 @@ class Member::Depot::FilesController < Member::BaseController
     @my_files = current_user.files.paginate(:page => params[:page], :order => "created_at DESC")
   end
 
+  def show
+    @file = current_user.files.find(params[:id])
+    @extension = @file.filename.scan(/\.\w+$/)
+  end
+
   def new
   end
 

@@ -1,12 +1,18 @@
 .no_margins{}
-.floater_L{}
-.floater_R{}
-.float_breaker{}
+.floater_L{float:left;}
+.floater_R{foat:right;}
+.float_breaker{clear:both;}
 #file_overview{}
+.end_list {border-bottom:1px solid #d1d1d1;}
+.fileicon_32{background-image: url(../../tog_depot/images/tog-depot_iconfile_32px.gif); background-repeat:no-repeat; vertical-align:bottom; text-align:center; height:32px; width:32px; font-family:Arial, Helvetica, sans-serif; font-size:9px; text-transform:uppercase;}
+.fileicon_48{background-image: url(../../tog_depot/images/tog-depot_iconfile_48px.gif); background-repeat:no-repeat; vertical-align:bottom; text-align:center; height:48px; width:48px; font-family:Arial, Helvetica, sans-serif; font-size:12px; text-transform:uppercase; font-weight:bold; color:#333333;}
+
+
 
 /*++++++++++++++  TABLE [Override TOG_core style]  +++++++++++++++*/
+
 table{
-    width: 100%;
+    width: 700px;
     border: 0;
     border-collapse: separate;
     border: 1px solid #d1d1d1;
@@ -17,16 +23,15 @@ table{
         font-weight: bold;
         font-size: 1.1em;
         text-align: left;
-        padding: 0px 0px;
+        padding: 2px 5px;
         border-right: 1px solid #d1d1d1;
         border-left: 1px solid #d1d1d1;
     }
     table th, table td {
-        padding: 0px;
+        padding: 0px 0px;
         border-top: none;
         border-bottom: none;
     }
-		
     table th img, table td img {
         vertical-align: middle;
     }
@@ -40,3 +45,8 @@ table{
         background: #edf3fd;
         color: inherit;
     }
+		
+/*++++++++++++++  TEMPLATE.CSS [Override styles]  +++++++++++++++*/
+
+		.col_60_40 .left_col{width:75%;}
+		.col_60_40 .right_col{width:25%;}

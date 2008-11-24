@@ -1,0 +1,41 @@
+<% content_for :sidebar do %>
+  tag_cloud_files
+<% end %>
+
+
+
+<p><%= link_to 'Upload new file', new_member_depot_file_url, :class => 'button add' %></p>
+
+
+<div class="portlet portletB">
+    <h2><span>My Files </span></h2>
+
+    <div class="portlet_content"> 
+        <ul>
+          <% if @my_files.empty? %>
+            <li class="clearfix">There isn't any files yet.
+          <% else %>
+              <% @my_files.each do |file| %>
+                <li class="clearfix">
+                  <h4>
+                  	<%= link_to file.title, edit_member_depot_file_url(file.id) %>
+                  </h4>
+
+                  <p><%= file.filename %></p> 
+                  <p>
+                  <% tags = file.tag_list %>
+                  Tags:
+                  <% if !tags.blank? %>
+                    <% for tag in tags %>
+                      <%= link_to tag, tags_member_depot_files_url(:tag => tag, :user => file.user_id) %>
+                    <% end %>
+                  <% else %>
+                    No tags.
+                  <% end %>
+                </p>
+                </li>
+              <% end %>
+          <% end %> 
+        </ul>
+    </div>    
+</div>
