@@ -1,4 +1,4 @@
-<div class="titleB"><img src="/tog_depot/images/tog-depot_iconfile_48px.gif" border="0" /> Edit file</div><br /><br />
+<div class="titleB"><img src="/tog_depot/images/tog-depot_iconfolder_48px.gif" border="0" /> Edit folder<br /><br /></div>
 
 <%= error_messages_for :file %>
 <% form_for :file, :url => member_depot_file_path(@file), :html => {:action => 'update', :id => "settings", :multipart => true, :method => "put"} do |f| -%>
@@ -8,9 +8,6 @@
       <p><label for="post_tag_list">Tags (separated with ,)</label><%= f.text_field :tag_list, :class=>"fieldbox wide" -%></p>
       <p>
         <label for="post_state">Visibility</label><%= select_tag "state", options_for_select(Conversatio::Post.states, :draft) -%></p>
-      <p>
-        <label for="post_state">Parent folder</label>
-        <%= select_tag "state", options_for_select(Conversatio::Post.states, :draft) -%></p>
     </div>
   </fieldset>
   <fieldset>
@@ -21,6 +18,6 @@
       <p><label for="file_file">File</label><%= f.file_field :uploaded_data %></p>
     </div>
   </fieldset> 
-  <div class="actions"><%= f.submit "Delete file",:class=>"button mainaction" %><%= f.submit "Discard changes",:class=>"button mainaction" %><%= f.submit "Apply changes",:class=>"button mainaction" %></div>
+  <div class="actions"><%= f.submit "Update",:class=>"button mainaction" %></div>
 <% end -%>
 

@@ -20,9 +20,11 @@ class Depot::File < ActiveRecord::Base
 
   acts_as_commentable
   acts_as_taggable
+#  acts_as_list :scope => :folder
   seo_urls
 
-  belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
+  belongs_to :user, :class_name => "User", :foreign_key => "user_id"
+  belongs_to :folder	
  
   has_attachment :storage => :file_system,
                  :max_size => 5000.kilobytes,

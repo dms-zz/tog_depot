@@ -8,18 +8,27 @@
  <div class="fileicon_48"><img src="/tog_depot/images/1px.gif" border="0" height="26" width="5"/><br /><%= @extension %></div> 
  </div>
  <div class="floater_R">
- <h1><img src="/tog_depot/images/1px.gif" border="0" height="28" width="5"/><br /><%= @file.title %><h1>
+ <h1><img src="/tog_depot/images/1px.gif" border="0" height="28" width="5"/><br /><%= @file.title %></h1>
  </div>
  <div class="float_breaker"></div>
  <div style="padding-left:15px;">
-  <b>Tags:</b> <a href="#">aqui</a> <a href="#">van</a> <a href="#">los</a> <a href="#">tags</a> <a href="#">de</a> <a href="#">cada</a>  <a href="#">archivo</a>   
+  <% tags = @file.tag_list %>
+                  <b>Tags:</b>
+                  <% if !tags.blank? %>
+                    <% for tag in tags %>
+                      <%= link_to tag, tags_member_depot_files_url(:tag => tag, :user => @file.user_id) %>
+                    <% end %>
+                  <% else %>
+                    No tags.
+                  <% end %> 
   <p class="file_metadata">
    <b>Created:</b> <%= @file.created_at %><br />
    <b>Updated:</b> <%= @file.updated_at %><br />
    <b>Size:</b> <%= @file.size %><br />
-   <b>Type:</b><br />
-   <b>Uploaded by:</b><br />   
-   <b>Times downloaded:</b>
+   <b>Owner:</b> <%= @file.user.login %><br />   
+   <b>Times downloaded:</b><br />
+   <b>Parent folder:</b><br />
+   <b>Visibility:</b>
   </p>
   <p>
    <b>Description:</b>
@@ -35,7 +44,9 @@
   </div>
   <div style="clear:both;" class="float_breaker"></div><br />
 
- <%= link_to "&lt;&lt; Back to public files list", "/depot/files"  %>
+ <%= link_to "&lt;&lt; Back to public filelist", depot_files_path  %><br /><br />
+ <%= render :partial => "shared/comments", :locals => { :commentable => @file } %>
+
 </div>
 
 

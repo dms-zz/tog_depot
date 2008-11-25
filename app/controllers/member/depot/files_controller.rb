@@ -6,7 +6,7 @@ class Member::Depot::FilesController < Member::BaseController
 
   def show
     @file = current_user.files.find(params[:id])
-    @extension = @file.filename.scan(/\.\w+$/)
+    @extension = @file.filename.to_s.scan(/\.\w+$/)
   end
 
   def new
@@ -21,7 +21,7 @@ class Member::Depot::FilesController < Member::BaseController
         @file.send("#{params[:state].to_s}!")
         wants.html do
           flash[:ok] = 'New file Update.'
-          redirect_to member_depot_files_path
+#          redirect_to member_depot_files_path
         end
       else
         wants.html do

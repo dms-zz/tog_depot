@@ -4,12 +4,14 @@
 # resources :tog_depot
 
 namespace(:depot) do |depot|
+  depot.resources :filefolders
   depot.resources :files
   depot.resources :files, :collection => {:tags => :get}
 end
 
 namespace(:member) do |member| 
    member.namespace(:depot) do |depot|
+      depot.resources :filefolders
       depot.resources :files
       depot.resources :files, :collection => {:tags => :get}
    end

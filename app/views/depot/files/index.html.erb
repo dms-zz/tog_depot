@@ -1,19 +1,40 @@
 <% include_stylesheet "/tog_depot/stylesheets/depot" %>
 <div class="portlet portletB">
-<%= link_to 'Upload new file', new_member_depot_file_url, :class => 'button add' %><br /><br />
+<%= link_to 'Upload new file', new_member_depot_file_url, :class => 'button add' %>
+<%= link_to 'Create new folder', new_member_depot_filefolder_url, :class => 'button add' %><br /><br />
     <h2 style="width:690px;"><span>Public files</span></h2>
 
     <div class="portlet_content"> 
         <table border="0" cellpadding="0" cellspacing="0">
-                 <thead>
+    <thead>
                   <tr bgcolor="#eeeeee">
-                   <th><img src="/tog_depot/images/1px.gif" border="0" height="4" width="4"/></th>
-                   <th><div class="floater_L"><div><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></div></div> <div class="floater_R"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="4"/>Type</div><div class="float_breaker"></div></th>
-                   <th><div class="floater_L"><div><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></div></div> <div class="floater_R"<img src="/tog_depot/images/1px.gif" border="0" height="4" width="4"/>Filename</div><div class="float_breaker"></div></th>
-                   <th><div class="floater_L"><div><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></div></div> <div class="floater_R"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="4"/>Release date</div><div class="float_breaker"></div></th>
-                   <th><div class="floater_L"><div><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></div></div> <div class="floater_R"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="4"/>Member/Community</div><div class="float_breaker"></div></th>
-                   <th><div class="floater_L"><div><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></div></div> <div class="floater_R"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="4"/>Times dl.</div><div class="float_breaker"></div></th>
-                   <th><div class="floater_L"><div><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /><img src="/tog_depot/images/1px.gif" border="0" height="2" width="5"/><br /><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></div></div> <div class="floater_R"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="4"/>In folder</div><div class="float_breaker"></div></th>
+                   <th height="16" rowspan="2" align="left" valign="MIDDLE"></th>
+                   <th width="10" height="8" align="left" valign="MIDDLE">
+                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                   <th height="16" rowspan="2" align="left" valign="MIDDLE"> Type</th>
+                   <th width="10" height="8" align="left" valign="MIDDLE">
+                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                   <th height="16" rowspan="2" align="left" valign="MIDDLE"> Filename</th>
+                   <th width="10" height="8" align="left" valign="MIDDLE">
+                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                   <th height="16" rowspan="2" align="left" valign="MIDDLE"> Release date</th>
+                   <th width="10" height="8" align="left" valign="MIDDLE">
+                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                   <th height="16" rowspan="2" align="left" valign="MIDDLE"> Owner</th>
+                   <th width="10" height="8" align="left" valign="MIDDLE">
+                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                   <th height="16" rowspan="2" align="left" valign="MIDDLE"> Times dl.</th>
+                   <th width="10" height="8" align="left" valign="MIDDLE">
+                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                   <th height="16" rowspan="2" align="left" valign="MIDDLE"> In folder</th>
+                  </tr>
+                  <tr bgcolor="#eeeeee">
+                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
+                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
+                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
+                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
+                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
+                    <th height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
                   </tr>
                  </thead>
                  <tbody>
@@ -24,19 +45,16 @@
              <% @files.each do |file| %>
                 <tr>
                  <td></td>
-                 <td><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br /><div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br />EXT</div>
-                 
-                 </td>
-                 <td>
-								 <h3><%= link_to file.title, depot_file_path(file.id) %></h3>
-                  </td>
-                  <td>MONTH/DAY/YEAR</td>
-                  <td>Jorge/None</td>
-                  <td style="padding-right:8px;" align="right">56</td>
-                  <td>Foldername</td>
+                 <td colspan="2" align="CENTER"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br />
+                  <div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br />EXT</div>                 </td>
+                 <td colspan="2">
+								 <h3><%= link_to file.title, depot_file_path(file.id) %></h3>                  </td>
+                  <td colspan="2"><%= file.created_at %></td>
+                  <td colspan="2"><%= file.user.login%></td>
+                  <td style="padding-right:26px;" align="right" colspan="2">56</td>
+                  <td colspan="2">Foldername</td>
                   </tr>
-                  <tr><td class="end_list"></td><td class="end_list"></td>
-                 <td class="end_list" colspan="5">
+                  <tr><td class="brd_bt" colspan="3"></td><td class="end_list" colspan="10">
                   
                   <% tags = file.tag_list %>
                   <b>Tags:</b>
@@ -46,9 +64,7 @@
                     <% end %>
                   <% else %>
                     No tags.
-                  <% end %>
-                 
-                </td>
+                  <% end %>                </td>
                </tr>
              <% end %>
           <% end %> 
@@ -58,3 +74,5 @@
 </div><br />
 <div class="info_results" style="width:688px;"><div class="floater_L" style="float:left;">328 file(s)</div><div class="floater_R" style="float:right; padding-right:4px;"><img src="/tog_core/images/ico/arrow-left-blue-small.gif" border="0" /> Showing 1 / 290 <img src="/tog_core/images/ico/arrow-right-blue-small.gif" border="0" /></div><div class="float_breaker" style="clear:both;"></div></div>
     </div>
+
+

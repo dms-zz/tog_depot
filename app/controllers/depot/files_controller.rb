@@ -6,7 +6,7 @@ class Depot::FilesController < ApplicationController
   def show
 
     @file = Depot::File.find params[:id]
-    @extension = @file.filename.scan(/\.\w+$/)
+    @extension = @file.filename.to_s.scan(/\.\w+$/)
   end
 
 end
