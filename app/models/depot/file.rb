@@ -26,7 +26,7 @@ class Depot::File < ActiveRecord::Base
   belongs_to :filefolder	
  
   has_attachment :storage => :file_system,
-                 :max_size => 5000.kilobytes,
+                 :max_size => Tog::Plugins.settings(:tog_depot, "file.max_size_file").to_i.kilobytes,
                  :path_prefix=>'public/system/files'
   validates_as_attachment
 

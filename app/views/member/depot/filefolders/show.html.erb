@@ -1,10 +1,23 @@
 <% include_stylesheet "/tog_depot/stylesheets/depot" %>
 <% content_for :sidebar do %>
-tag_cloud
+<ul class="tags">
+<li class="l5">
+<%= link_to 'Edit metadata' %>
+</li>
+<li class="l5">
+<%= link_to 'Update archive' %> 
+</li>
+<li class="l5">
+<%= link_to 'Change visibility' %>
+</li>
+<li class="l5">
+<%= link_to 'Delete' %>
+</li>
+</ul>
 <% end %>
 
-
-<h1><%= @filefolder.title%></h1>
+<div class="portlet portletB">
+<h1><img src="/tog_depot/images/tog-depot_iconfolder_48px.gif" border="0" alt="Member file"/> <%= @filefolder.title%></h1>
 <b>Tags:</b>
 	<% tags = @filefolder.tag_list %>
 	<% if !tags.blank? %>
@@ -15,13 +28,16 @@ tag_cloud
     No tags.
   <% end %>
 <br />
-<b>Description:</b> <%= @filefolder.description %><br />
-<b>User:</b> <%= @filefolder.user.login %><br />
+<b>Owner:</b> <%= @filefolder.user.login %><br />
 <b>Created at:</b> <%= @filefolder.created_at %><br />
-<b>Updated at:</b> <%= @filefolder.updated_at %><br />
+<b>Updated at:</b> <%= @filefolder.updated_at %><br>
+<br />
+<b>Description:</b> <%= @filefolder.description %><br>
+<br />
 
-<div class="portlet_content"  >
-        <table border="0" cellpadding="0" cellspacing="0">
+<%= link_to 'Upload new file', :class => 'button mainaction add' %><br /><br />
+<h2 style="width:690px;"><span><%= @filefolder.title%> content</span></h2>
+<table border="0" cellpadding="0" cellspacing="0">
                  <thead>
                   <tr bgcolor="#eeeeee">
                    <th rowspan="2"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="4"/>Sel.</th>
@@ -53,7 +69,7 @@ tag_cloud
                  <tbody>
                  
           <% if @my_files.empty? %>
-            <tr><td>There isn't any files yet.
+            <tr><td colspan="15">There isn't any files yet.
                </td>
             </tr>
           <% else %>
@@ -73,7 +89,7 @@ tag_cloud
 										<% if file.filefolder%>
 										<%= file.filefolder.title %>
                     <%end%>
-                    </td>
+                  </td>
                   <td colspan="2"><img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file"/></td>
                   </tr>
                   <tr><td class="brd_bt" colspan="3"></td><td class="end_list" colspan="12">
@@ -92,14 +108,17 @@ tag_cloud
              <% end %>
           <% end %> 
         </tbody>
-        </table>
+  </table>
             
-</div><br />
+
+<br>
 <div class="info_results" style="width:688px;">
 	<div class="floater_L" style="float:left;">328 file(s)</div>
   <div class="floater_R" style="float:right; padding-right:4px;">
   	<img src="/tog_core/images/ico/arrow-left-blue-small.gif" border="0" /> Showing 1 / 290 <img src="/tog_core/images/ico/arrow-right-blue-small.gif" border="0" />
   </div>
+  <br>
   <div class="float_breaker" style="clear:both;"></div>
-</div>
+
+</div>  <br><br>&lt;&lt; Back to filelist</div>
 

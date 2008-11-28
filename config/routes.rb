@@ -19,15 +19,6 @@ namespace(:member) do |member|
    end
 end
 
-namespace(:admin) do |admin| 
-   admin.namespace(:depot) do |depot|
-      depot.resources :filefolders
-      depot.resources :filefolders, :collection => {:tags => :get}
-      depot.resources :files
-      depot.resources :files, :collection => {:tags => :get}
-   end
-end
-
 
 # with_options(:controller => 'conversatio/posts', :conditions => { :method => :get }) do |post|
 #   post.tag_conversatio_blog_posts      '/blogs/:blog_id/posts/tag/:tag_name', :action => 'by_tag'

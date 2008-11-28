@@ -1,10 +1,8 @@
 <% include_stylesheet "/tog_depot/stylesheets/depot" %>
-<% content_for :sidebar do %>
-tag_cloud
-<% end %>
 
 
-<h1><%= @folder.title%></h1>
+
+<h1><img src="/tog_depot/images/tog-depot_iconfolder_48px.gif" border="0" alt="Member file"/> <%= @folder.title%></h1>
 <b>Tags:</b>
 	<% tags = @folder.tag_list %>
 	<% if !tags.blank? %>
@@ -15,33 +13,35 @@ tag_cloud
     No tags.
   <% end %>
 <br />
-<b>Description:</b> <%= @folder.description %><br />
+
 <b>Owner:</b> <%= @folder.user.login %><br />
 <b>Created at:</b> <%= @folder.created_at %><br />
 <b>Updated at:</b> <%= @folder.updated_at %><br />
+<br>
+<b>Description:</b> <%= @folder.description %><br /><br />
 
-<div class="portlet_content"  >
+
+<div class="portlet portletB">
+<h2 style="width:690px;"><span>++++[FILEFOLDER NAME]++++ content</span></h2>
         <table border="0" cellpadding="0" cellspacing="0">
                  <thead>
                   <tr bgcolor="#eeeeee">
                    <th rowspan="2"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="4"/>Sel.</th>
                    <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
-                   <th rowspan="2">Type</th>
+                   <th rowspan="2"> &nbsp;Type</th>
                    <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
-                   <th rowspan="2">Filename</th>
+                   <th rowspan="2">&nbsp;Filename</th>
                    <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
-                   <th rowspan="2">Release date</th>
+                   <th rowspan="2">&nbsp;Release date</th>
                    <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
-                   <th rowspan="2">Owner</th>
+                   <th rowspan="2">&nbsp;Owner</th>
                    <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
-                   <th rowspan="2">Times dl.</th>
+                   <th rowspan="2">&nbsp;Times dl.</th>
                    <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
-                   <th rowspan="2">In folder</th>
-                   <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
-                   <th rowspan="2">Vis.</th>
+                   <th rowspan="2">&nbsp;In folder</th>
+
                   </tr>
                   <tr bgcolor="#eeeeee">
-                    <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
                     <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
                     <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
                     <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
@@ -53,7 +53,7 @@ tag_cloud
                  <tbody>
                  
           <% if @my_files.empty? %>
-            <tr><td>There isn't any files yet.
+            <tr><td colspan="14">There isn't any files yet.
                </td>
             </tr>
           <% else %>
@@ -61,20 +61,16 @@ tag_cloud
                 <tr>
                  <td><input type="checkbox" /></td>
                  <td colspan="2"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br />
-                 <div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br /><%= file.filename.to_s.scan(/\.\w+$/) %></div>
-                 </td>
+                 <div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br /><%= file.filename.to_s.scan(/\.\w+$/) %></div>                 </td>
                 <td colspan="2">
-								 <h3><%= link_to file.title, depot_file_url(file.id) %></h3>
-                  </td>
+								 <h3><%= link_to file.title, depot_file_url(file.id) %></h3>                  </td>
                   <td colspan="2"><%= file.created_at %></td>
                   <td colspan="2"><%= file.user.login %></td>
                   <td style="padding-right:20px;" align="right" colspan="2">56</td>
                   <td colspan="2">
 										<% if file.filefolder%>
 										<%= file.filefolder.title %>
-                    <%end%>
-                    </td>
-                  <td colspan="2"><img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file"/></td>
+                    <%end%>                  </td>
                   </tr>
                   <tr><td class="brd_bt" colspan="3"></td><td class="end_list" colspan="12">
                   
@@ -94,12 +90,12 @@ tag_cloud
         </tbody>
         </table>
             
-</div><br />
+<br />
 <div class="info_results" style="width:688px;">
 	<div class="floater_L" style="float:left;">328 file(s)</div>
   <div class="floater_R" style="float:right; padding-right:4px;">
   	<img src="/tog_core/images/ico/arrow-left-blue-small.gif" border="0" /> Showing 1 / 290 <img src="/tog_core/images/ico/arrow-right-blue-small.gif" border="0" />
   </div>
   <div class="float_breaker" style="clear:both;"></div>
-</div>
+</div><br><br>&lt;&lt; Back to filelist</div>
 
