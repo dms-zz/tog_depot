@@ -1,12 +1,11 @@
-class Member::Depot::FilesController < Member::BaseController
+class Admin::Depot::FilesController < Admin::BaseController
 
   def index
-    @my_files = current_user.files.paginate(:page => params[:page], :order => "created_at DESC")
-    @my_folders = current_user.filefolders.paginate(:page => params[:page], :order => "created_at DESC")
+    @files = Depot::Files.paginate(:page => params[:page], :order => "created_at DESC")
   end
 
   def show
-    @file = current_user.files.find(params[:id])
+    @file = Depot::Files.find(params[:id])
     @extension = @file.filename.to_s.scan(/\.\w+$/)
   end
 
@@ -23,7 +22,7 @@ class Member::Depot::FilesController < Member::BaseController
         @file.send("#{params[:state].to_s}!")
         wants.html do
           flash[:ok] = 'New file Update.'
-          redirect_to member_depot_files_path
+          redirect_to admin_depot_files_path
         end
       else
         wants.html do
@@ -49,7 +48,7 @@ class Member::Depot::FilesController < Member::BaseController
          @file.send("#{params[:state].to_s}!")
 				 wants.html do
           flash[:ok] = "File <b>#{@file.title}</b> succcessfully updated!"
-          redirect_to member_depot_files_path
+          redirect_to admin_depot_files_path
         end
       else
         wants.html do

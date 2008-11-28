@@ -4,19 +4,21 @@
 <%= error_messages_for :file %>
 <% form_for :file, :url => member_depot_files_path, :html => {:action => 'create', :id => "settings", :multipart => true, :method => "post"} do |f| -%>
     <div class="fields">
-    <p><label for="file_title">File title</label><%= f.text_field :title, :class=>"fieldbox wide" %></p>
-<p>
-        <label for="post_state">Parent folder</label>
-        <%= select_tag "state", options_for_select(Conversatio::Post.states, :draft) -%></p>
-      <p><label for="post_tag_list">Tags (separated with ,)</label><%= f.text_field :tag_list, :class=>"fieldbox wide" -%></p>
-      <p>
-        <label for="post_state">Visibility</label>
-        <%= select_tag "state", options_for_select(Conversatio::Post.states, :draft) -%></p>
+      <p><label for="file_title">File title</label><%= f.text_field :title, :class=>"fieldbox wide" %></p>
+      <p><label for="file_state">Parent folder</label>
+			<%if @folders%>
+   			<%= select (:file, :filefolder_id, @folders.collect {|p| [p.title,p.id]}, { :include_blank => true})%>
+       <%else%>
+       <%= link_to 'Create new folder', new_member_depot_filefolder_url, :class => '' %> <br /><br />
+       <%end%>
+          </p>
+      <p><label for="file_tag_list">Tags (separated with ,)</label><%= f.text_field :tag_list, :class=>"fieldbox wide" -%></p>
+      <p><label for="file_state">Visibility</label>
+        <%= select_tag "state", options_for_select(Depot::File.states, :draft) -%></p>
       <p><label for="file_description">File description</label><%= f.text_area :description, :class=>"fieldbox wide" %></p>
-      <p>
-        <label for="file_file">Select file</label><%= f.file_field :uploaded_data %></p>
+      <p><label for="file_file">Select file</label><%= f.file_field :uploaded_data %></p>
     </div>
   </fieldset> 
   
-  <div class="actions"><%= submit_tag 'Back to filelist', :class => 'button mainaction' %><%= submit_tag 'Create file', :class => 'button mainaction' %></div>
+<%= submit_tag 'Create file', :class => 'button mainaction' %></div>
 <% end -%>

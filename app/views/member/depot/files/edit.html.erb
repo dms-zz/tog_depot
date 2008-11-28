@@ -5,22 +5,23 @@
 
    <fieldset>
     <div class="fields">
-      <p><label for="post_tag_list">Tags (separated with ,)</label><%= f.text_field :tag_list, :class=>"fieldbox wide" -%></p>
-      <p>
-        <label for="post_state">Visibility</label><%= select_tag "state", options_for_select(Conversatio::Post.states, :draft) -%></p>
-      <p>
-        <label for="post_state">Parent folder</label>
-        <%= select_tag "state", options_for_select(Conversatio::Post.states, :draft) -%></p>
-    </div>
-  </fieldset>
-  <fieldset>
-    <div class="fields">
       <p><label for="file_title">File title</label><%= f.text_field :title, :class=>"fieldbox wide" %></p>
+      <p><label for="file_state">Parent folder</label>
+			<%if @folders%>
+   			<%= select (:file, :filefolder_id, @folders.collect {|p| [p.title,p.id]}, { :include_blank => true}) %>
+       <%else%>
+       <%= link_to 'Create new folder', new_member_depot_filefolder_url, :class => '' %> <br /><br />
+       <%end%>
+        </p>
+      <p><label for="file_tag_list">Tags (separated with ,)</label><%= f.text_field :tag_list, :class=>"fieldbox wide" -%></p>
+      <p><label for="file_state">Visibility</label>
+        <%= select_tag "state", options_for_select(Depot::File.states, :draft) -%></p>
       <p><label for="file_description">File description</label><%= f.text_area :description, :class=>"fieldbox wide" %></p>
-      <p><%= @file.public_filename %></p>
-      <p><label for="file_file">File</label><%= f.file_field :uploaded_data %></p>
+      <% fields_for :file do |img|%>
+      <p><label for="file_file">Select file</label><%= img.file_field :uploaded_data %></p>
+      <% end %>
     </div>
   </fieldset> 
-  <div class="actions"><%= f.submit "Delete file",:class=>"button mainaction" %><%= f.submit "Discard changes",:class=>"button mainaction" %><%= f.submit "Apply changes",:class=>"button mainaction" %></div>
+  <div class="actions"><%= f.submit "Apply changes",:class=>"button mainaction" %></div>
 <% end -%>
-
+<p><%= @file.public_filename %></p>

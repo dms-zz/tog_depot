@@ -5,6 +5,7 @@
 
 namespace(:depot) do |depot|
   depot.resources :filefolders
+  depot.resources :filefolders, :collection => {:tags => :get}
   depot.resources :files
   depot.resources :files, :collection => {:tags => :get}
 end
@@ -12,6 +13,16 @@ end
 namespace(:member) do |member| 
    member.namespace(:depot) do |depot|
       depot.resources :filefolders
+      depot.resources :filefolders, :collection => {:tags => :get}
+      depot.resources :files
+      depot.resources :files, :collection => {:tags => :get}
+   end
+end
+
+namespace(:admin) do |admin| 
+   admin.namespace(:depot) do |depot|
+      depot.resources :filefolders
+      depot.resources :filefolders, :collection => {:tags => :get}
       depot.resources :files
       depot.resources :files, :collection => {:tags => :get}
    end

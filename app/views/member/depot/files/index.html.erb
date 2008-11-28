@@ -48,8 +48,40 @@
                  </thead>
                  <tbody>
                  
+             <% @my_folders.each do |folder| %>
+                <tr>
+                 <td><input type="checkbox" /></td>
+                 <td colspan="2"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br />
+                 <div class="foldericon_32"><img src="/tog_depot/images/tog-depot_iconfolder_32px.gif" border="0" /><br /></div>
+                 </td>
+                <td colspan="2">
+								 <h3><%= link_to folder.title, member_depot_filefolder_url(folder.id) %></h3>
+                  </td>
+                  <td colspan="2"><%= folder.created_at %></td>
+                  <td colspan="2"><%= folder.user.login %></td>
+                  <td style="padding-right:20px;" align="right" colspan="2"></td>
+                  <td colspan="2"> </td>
+                  <td colspan="2"><img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file"/></td>
+                  </tr>
+                  <tr><td class="brd_bt" colspan="3"></td><td class="end_list" colspan="12">
+                  
+                  <% tags = folder.tag_list %>
+                  <b>Tags:</b>
+                  <% if !tags.blank? %>
+                    <% for tag in tags %>
+                      <%= link_to tag, tags_member_depot_filefolders_url(:tag => tag, :user => folder.user_id) %>
+                    <% end %>
+                  <% else %>
+                    No tags.
+                  <% end %>
+	               </td>
+               </tr>
+             <% end %>
+
           <% if @my_files.empty? %>
             <tr><td>There isn't any files yet.
+               </td>
+            </tr>
           <% else %>
              <% @my_files.each do |file| %>
                 <tr>
@@ -63,7 +95,11 @@
                   <td colspan="2"><%= file.created_at %></td>
                   <td colspan="2"><%= file.user.login %></td>
                   <td style="padding-right:20px;" align="right" colspan="2">56</td>
-                  <td colspan="2">Foldername</td>
+                  <td colspan="2">
+										<% if file.filefolder%>
+										<%= file.filefolder.title %>
+                    <%end%>
+                    </td>
                   <td colspan="2"><img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file"/></td>
                   </tr>
                   <tr><td class="brd_bt" colspan="3"></td><td class="end_list" colspan="12">
@@ -76,7 +112,8 @@
                     <% end %>
                   <% else %>
                     No tags.
-                  <% end %>                </td>
+                  <% end %>
+	               </td>
                </tr>
              <% end %>
           <% end %> 

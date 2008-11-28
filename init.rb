@@ -5,4 +5,6 @@ Tog::Interface.sections(:site).add "Files", "/depot/files"
 
 Tog::Interface.sections(:member).add "My files", "/member/depot/files"
 
+Tog::Interface.sections(:admin).add "Files", "/admin/depot/files"
+
 #Tog::Plugins.helpers Files::FilesHelper
