@@ -19,13 +19,10 @@ namespace(:member) do |member|
    end
 end
 
+with_options(:controller => 'depot/files', :conditions => { :method => :get }) do |file|
+  file.tag_depot_files      'depot/files/tag/:tag_name', :action => 'by_tag'
+end
 
-# with_options(:controller => 'conversatio/posts', :conditions => { :method => :get }) do |post|
-#   post.tag_conversatio_blog_posts      '/blogs/:blog_id/posts/tag/:tag_name', :action => 'by_tag'
-#   post.tag_conversatio_blogs_posts     '/blogs/posts/tag/:tag_name',          :action => 'all_by_tag'
-#   post.with_options(:action => 'archives') do |archive|
-#      archive.daily_archives_conversatio_blog_posts   '/blogs/:blog_id/archives/:year/:month/:day', :action => 'archives'
-#      archive.monthly_archives_conversatio_blog_posts '/blogs/:blog_id/archives/:year/:month', :day => nil, :action => 'archives'
-#      archive.yearly_archives_conversatio_blog_posts  '/blogs/:blog_id/archives/:year', :month => nil, :day => nil, :action => 'archives'
-#    end
-# end
+#with_options(:controller => 'depot/files', :conditions => { :method => :get }) do |post|
+#  file.tag_depot_files      'depot/files/:file_id/tag/:tag_name', :action => 'by_tag'
+#end

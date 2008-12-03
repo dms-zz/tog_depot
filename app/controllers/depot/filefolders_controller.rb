@@ -1,4 +1,7 @@
 class Depot::FilefoldersController < ApplicationController
+
+  helper 'depot/files'
+
   def index
     @folder = Depot::Filefolder.paginate(:page => params[:page], :order => "created_at DESC")
   end

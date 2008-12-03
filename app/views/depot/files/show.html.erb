@@ -1,6 +1,6 @@
 <% include_stylesheet "/tog_depot/stylesheets/depot" %>
 <% content_for :sidebar do %>
-tag_cloud
+  <%= render :partial => 'tag_cloud_file', :locals => { :file => @file } %>
 <% end %>
 
 
