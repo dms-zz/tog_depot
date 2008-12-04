@@ -8,7 +8,8 @@ WORK IN PROGRESS
 
 This plugin is still under development, not use in a production environment
 
-== Included functionality
+Included functionality
+---------------------- 
 
 * File management
 * Folder management
@@ -82,8 +83,7 @@ rake db:migrate
 
 More
 -------
+Released under the MIT license
 
 [http://dmsti.es](http://dmsti.es)
-
-
-DMS 2008, Desarrollo de Medios y Sistemas. Released under the MIT license
+DMS 2008, Desarrollo de Medios y Sistemas. 
