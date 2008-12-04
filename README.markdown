@@ -3,10 +3,10 @@ Depot
 
 File management system for TOG:Community framework.
 
-WORK IN PROGRESS
-=================
+WORK IN PROGRESS!
+----------------
 
-This plugin is still under development, not use in a production environment
+This plugin is still under development, so please don't use in a production environment.
 
 Included functionality
 ---------------------- 
@@ -25,7 +25,7 @@ Resources
 Plugin requirements
 -------------------
 
-In case you haven't installed any of them previously you'll need the following plugins:
+In case you haven't got any of them installed previously, you'll need the following plugins on your application:
 
 * [acts\_as\_commentable](https://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_commentable)
 * [attachment\_fu](http://github.com/technoweenie/attachment_fu/tree/master)
