@@ -21,8 +21,9 @@ end
 
 with_options(:controller => 'depot/files', :conditions => { :method => :get }) do |file|
   file.tag_depot_files      'depot/files/tag/:tag_name', :action => 'by_tag'
+  file.depot_files_order    'depot/files/order/:order',  :action => 'index'
 end
 
-#with_options(:controller => 'depot/files', :conditions => { :method => :get }) do |post|
-#  file.tag_depot_files      'depot/files/:file_id/tag/:tag_name', :action => 'by_tag'
-#end
+with_options(:controller => 'member/depot/files', :conditions => { :method => :get }) do |file|
+  file.tag_member_depot_files      'member/depot/files/tag/:tag_name', :action => 'by_tag'
+end

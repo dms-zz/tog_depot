@@ -6,7 +6,7 @@ File management system for TOG:Community framework.
 WORK IN PROGRESS!
 ----------------
 
-This plugin is still under development, so please don't use in a production environment.
+This plugin is still under development, so please don't use it in a production environment.
 
 Included functionality
 ---------------------- 

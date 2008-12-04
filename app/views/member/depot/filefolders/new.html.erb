@@ -1,5 +1,5 @@
 <div class="titleB"><img src="/tog_depot/images/tog-depot_iconfolder_48px.gif" border="0" /> Create new folder<br /><br /></div>
-
+ 
 <%= error_messages_for :folder %>
 <% form_for :folder, :url => member_depot_filefolders_path, :html => {:action => 'create', :method => "post", :id => "settings"} do |f| -%>
   <fieldset>
@@ -14,7 +14,7 @@
         <label for="folder_description">Description</label><%= f.text_area :description, :class=>"fieldbox wide" %></p>
      
     </div>
-  </fieldset> 
+  </fieldset>
   <div class="actions"><%= submit_tag 'Back to filelist', :class => 'button mainaction' %>
 <%= submit_tag 'Create folder', :class => 'button mainaction' %></div>
 <% end -%>

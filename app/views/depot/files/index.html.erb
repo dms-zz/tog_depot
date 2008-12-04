@@ -14,13 +14,13 @@
                    <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;Type</th>
                    <th width="10" height="8" align="left" valign="MIDDLE">
                      <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
-                   <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;Filename</th>
+                   <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;<%= link_to 'Filename', depot_files_order_path('title') %></th>
                    <th width="10" height="8" align="left" valign="MIDDLE">
                      <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
-                   <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;Release date</th>
+                   <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;<%= link_to 'Release date', depot_files_order_path('created_at') %></th>
                    <th width="10" height="8" align="left" valign="MIDDLE">
                      <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
-                   <th height="16" rowspan="2" align="left" valign="MIDDLE">&nbsp; Owner</th>
+                   <th height="16" rowspan="2" align="left" valign="MIDDLE">&nbsp; <%= link_to 'Owner', depot_files_order_path('user_id') %></th>
                    <th width="10" height="8" align="left" valign="MIDDLE">
                      <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
                    <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;Times dl.</th>
@@ -56,7 +56,7 @@
                   <b>Tags:</b>
                   <% if !tags.blank? %>
                     <% for tag in tags %>
-                      <%= link_to tag, tag_depot_files_path(tag) %>
+                      <%= link_to tag, tag_depot_files_path(tag.to_sym) %>
                     <% end %>
                   <% else %>
                     No tags.
@@ -71,7 +71,7 @@
                 <tr>
                  
                  <td colspan="2" align="CENTER"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br />
-                  <div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br />EXT</div>                 </td>
+                  <div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br /><%= file.filename.to_s.scan(/\.\w+$/) %></div>                 </td>
                  <td colspan="2">
 								 <h3><%= link_to file.title, depot_file_path(file.id) %></h3>                  </td>
                   <td colspan="2"><%= file.created_at %></td>
@@ -89,7 +89,7 @@
                   <b>Tags:</b>
                   <% if !tags.blank? %>
                     <% for tag in tags %>
-                      <%= link_to tag, tags_depot_files_url(:tag => tag, :user => file.user_id) %>
+                      <%= link_to tag, tag_depot_files_path(tag.to_sym) %>
                     <% end %>
                   <% else %>
                     No tags.

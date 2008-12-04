@@ -14,7 +14,7 @@
 <div class="portlet portletB">
 <%= link_to 'Upload new file', new_member_depot_file_url, :class => 'button add' %>
 <%= link_to 'Create new folder', new_member_depot_filefolder_url, :class => 'button add' %> <br /><br />
-    <h2 style="width:690px;"><span><%= current_user.login %>&rsquo;s files - Disk cuota: XXX.XXMb / XXX.XXMb (XXX.XXMb Free)</span></h2>
+    <h2 style="width:690px;"><span><%= current_user.login %>&rsquo;s files marked as tag:<b> <%= params[:tag_name]%></b></span></h2>
 
 <div class="portlet_content"  >
         <table border="0" cellpadding="0" cellspacing="0">
@@ -79,7 +79,7 @@
              <% end %>
 
           <% if @my_files.empty? %>
-            <tr><td>There isn't any files yet.
+            <tr><td  colspan="12">There isn't any files yet.
                </td>
             </tr>
           <% else %>

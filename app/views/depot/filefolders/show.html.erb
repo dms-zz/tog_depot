@@ -7,7 +7,7 @@
 	<% tags = @folder.tag_list %>
 	<% if !tags.blank? %>
     <% for tag in tags %>
-      <%= link_to tag, tags_depot_filefolders_url(:tag => tag) %>
+    	<%= link_to tag, tag_depot_files_path(tag.to_sym) %>
     <% end %>
   <% else %>
     No tags.
@@ -78,7 +78,7 @@
                   <b>Tags:</b>
                   <% if !tags.blank? %>
                     <% for tag in tags %>
-                      <%= link_to tag, tags_depot_files_url(:tag => tag, :user => file.user_id) %>
+                      <%= link_to tag, tag_depot_files_path(tag.to_sym) %>
                     <% end %>
                   <% else %>
                     No tags.

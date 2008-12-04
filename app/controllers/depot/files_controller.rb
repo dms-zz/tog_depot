@@ -3,8 +3,13 @@ class Depot::FilesController < ApplicationController
   helper 'depot/files'
 
   def index
-    @files = Depot::File.paginate(:page => params[:page], :order => "created_at DESC",  :conditions => ['state = ?', 'published'])
-    @folders = Depot::Filefolder.paginate(:page => params[:page], :order => "created_at DESC")
+    if params[:order]
+      @order = params[:order]
+    else 
+      @order = "created_at DESC"
+    end
+    @files = Depot::File.paginate(:page => params[:page], :order => @order,  :conditions => ['state = ?', 'published'])
+    @folders = Depot::Filefolder.paginate(:page => params[:page], :order => @order)
   end
 
   def show
@@ -16,6 +21,7 @@ class Depot::FilesController < ApplicationController
   def by_tag
     @tag  =  Tag.find_by_name(params[:tag_name])
     @files = Depot::File.find_tagged_with(@tag, :conditions => ['state=?', "published"]) unless @tag.nil?
+    @folders = Depot::Filefolder.find_tagged_with(@tag) unless @tag.nil?
   end
 
 end

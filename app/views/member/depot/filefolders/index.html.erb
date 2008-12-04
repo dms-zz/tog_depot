@@ -9,13 +9,13 @@
 </li>
 </ul>
 <% end %>
-
-
+ 
+ 
 <div class="portlet portletB">
-<%= link_to 'Add new file to folder', new_member_depot_file_url, :class => 'button add' %>  <br /><br />
+<%= link_to 'Add new file to folder', new_member_depot_file_url, :class => 'button add' %> <br /><br />
     <h2 style="width:690px;"><span><img src="/tog_depot/images/tog-depot_iconfolder_16px.gif" border="0" /> +++[ FOLDERNAME ]+++ - Owner: +++[ USERNAME ]+++ - Visibility: +++[ Visibility ]+++</span></h2>
-
-<div class="portlet_content"  >
+ 
+<div class="portlet_content" >
         <table border="0" cellpadding="0" cellspacing="0">
                  <thead>
                   <tr bgcolor="#eeeeee">
@@ -30,7 +30,7 @@
                    <th rowspan="2">Owner</th>
                    <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
                    <th rowspan="2">Times dl.</th>
-
+ 
                    <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
                    <th rowspan="2">Vis.</th>
                   </tr>
@@ -40,7 +40,7 @@
                     <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
                     <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
                     <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-
+ 
                     <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
                   </tr>
                  </thead>
@@ -52,21 +52,21 @@
              <% @my_folders.each do |file| %>
                 <tr>
                  <td><input type="checkbox" /></td>
-                 <td colspan="2"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br /><div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br />EXT</div>                 </td>
+                 <td colspan="2"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br /><div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br />EXT</div> </td>
                  <td colspan="2">
-								 <h3><%= file.title %></td>
+                 <h3><%= file.title %></td>
                   <td colspan="2"><%= file.created_at %></td>
                   <td colspan="2"><%= file.user.login %></td>
                   <td style="padding-right:20px;" align="right" colspan="2">56</td>
                   <td colspan="2"><img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file"/></td>
                   </tr>
              <% end %>
-          <% end %> 
+          <% end %>
         </tbody>
         </table>
             
 </div><br />
 <div class="info_results" style="width:688px;"><div class="floater_L" style="float:left;">328 file(s)</div><div class="floater_R" style="float:right; padding-right:4px;"><img src="/tog_core/images/ico/arrow-left-blue-small.gif" border="0" /> Showing 1 / 290 <img src="/tog_core/images/ico/arrow-right-blue-small.gif" border="0" /></div>
-
-  <div class="float_breaker" style="clear:both;"></div></div><br /><%= link_to '&lt;&lt; Back to main filelist',  member_depot_files_path %>
+ 
+  <div class="float_breaker" style="clear:both;"></div></div><br /><%= link_to '&lt;&lt; Back to main filelist', member_depot_files_path %>
     </div>

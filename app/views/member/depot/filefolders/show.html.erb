@@ -5,7 +5,7 @@
 <%= link_to 'Edit metadata' %>
 </li>
 <li class="l5">
-<%= link_to 'Update archive' %> 
+<%= link_to 'Update archive' %>
 </li>
 <li class="l5">
 <%= link_to 'Change visibility' %>
@@ -15,12 +15,12 @@
 </li>
 </ul>
 <% end %>
-
+ 
 <div class="portlet portletB">
 <h1><img src="/tog_depot/images/tog-depot_iconfolder_48px.gif" border="0" alt="Member file"/> <%= @filefolder.title%></h1>
 <b>Tags:</b>
-	<% tags = @filefolder.tag_list %>
-	<% if !tags.blank? %>
+  <% tags = @filefolder.tag_list %>
+  <% if !tags.blank? %>
     <% for tag in tags %>
       <%= link_to tag, tags_member_depot_filefolders_url(:tag => tag, :user => @filefolder.user_id) %>
     <% end %>
@@ -34,7 +34,7 @@
 <br />
 <b>Description:</b> <%= @filefolder.description %><br>
 <br />
-
+ 
 <%= link_to 'Upload new file', :class => 'button mainaction add' %><br /><br />
 <h2 style="width:690px;"><span><%= @filefolder.title%> content</span></h2>
 <table border="0" cellpadding="0" cellspacing="0">
@@ -80,14 +80,14 @@
                  <div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br /><%= file.filename.to_s.scan(/\.\w+$/) %></div>
                  </td>
                 <td colspan="2">
-								 <h3><%= link_to file.title, member_depot_file_url(file.id) %></h3>
+                 <h3><%= link_to file.title, member_depot_file_url(file.id) %></h3>
                   </td>
                   <td colspan="2"><%= file.created_at %></td>
                   <td colspan="2"><%= file.user.login %></td>
                   <td style="padding-right:20px;" align="right" colspan="2">56</td>
                   <td colspan="2">
-										<% if file.filefolder%>
-										<%= file.filefolder.title %>
+                    <% if file.filefolder%>
+                    <%= file.filefolder.title %>
                     <%end%>
                   </td>
                   <td colspan="2"><img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file"/></td>
@@ -103,22 +103,21 @@
                   <% else %>
                     No tags.
                   <% end %>
-	               </td>
+   </td>
                </tr>
              <% end %>
-          <% end %> 
+          <% end %>
         </tbody>
   </table>
             
-
+ 
 <br>
 <div class="info_results" style="width:688px;">
-	<div class="floater_L" style="float:left;">328 file(s)</div>
+  <div class="floater_L" style="float:left;">328 file(s)</div>
   <div class="floater_R" style="float:right; padding-right:4px;">
-  	<img src="/tog_core/images/ico/arrow-left-blue-small.gif" border="0" /> Showing 1 / 290 <img src="/tog_core/images/ico/arrow-right-blue-small.gif" border="0" />
+    <img src="/tog_core/images/ico/arrow-left-blue-small.gif" border="0" /> Showing 1 / 290 <img src="/tog_core/images/ico/arrow-right-blue-small.gif" border="0" />
   </div>
   <br>
   <div class="float_breaker" style="clear:both;"></div>
-
-</div>  <br><br>&lt;&lt; Back to filelist</div>
-
+ 
+</div> <br><br>&lt;&lt; Back to filelist</div>

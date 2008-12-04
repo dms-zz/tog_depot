@@ -1,23 +1,23 @@
 class Member::Depot::FilesController < Member::BaseController
-
+ 
   def index
     @my_files = current_user.files.paginate(:page => params[:page], :order => "created_at DESC")
     @my_folders = current_user.filefolders.paginate(:page => params[:page], :order => "created_at DESC")
   end
-
+ 
   def show
     @file = current_user.files.find(params[:id])
     @extension = @file.filename.to_s.scan(/\.\w+$/)
   end
-
+ 
   def new
     @folders = current_user.filefolders.paginate(:page => params[:page], :order => "created_at DESC")
   end
-
+ 
   def create
     @file = current_user.files.new(params[:file])
     @file.user_id = current_user.id
-
+ 
     respond_to do |wants|
       if @file.save
         @file.send("#{params[:state].to_s}!")
@@ -35,19 +35,19 @@ class Member::Depot::FilesController < Member::BaseController
   end
   
   def tags
-  end  
-
+  end
+ 
   def edit
     @file = current_user.files.find(params[:id])
     @folders = current_user.filefolders.paginate(:page => params[:page], :order => "created_at DESC")
   end
-	
+  
   def update
     @file = current_user.files.find(params[:id])
     respond_to do |wants|
       if @file.update_attributes(params[:file])
          @file.send("#{params[:state].to_s}!")
-				 wants.html do
+         wants.html do
           flash[:ok] = "File <b>#{@file.title}</b> succcessfully updated!"
           redirect_to member_depot_files_path
         end
@@ -59,5 +59,5 @@ class Member::Depot::FilesController < Member::BaseController
       end
     end
   end
-
+ 
 end

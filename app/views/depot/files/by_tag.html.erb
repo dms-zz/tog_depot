@@ -2,7 +2,7 @@
 <div class="portlet portletB">
 <%= link_to 'Upload new file', new_member_depot_file_url, :class => 'button add' %>
 <%= link_to 'Create new folder', new_member_depot_filefolder_url, :class => 'button add' %><br /><br />
-    <h2 style="width:690px;"><span>Public files <b><%= params[:tag_name]%></b></span></h2>
+    <h2 style="width:690px;"><span>Public files marked as tag:<b> <%= params[:tag_name]%></b></span></h2>
 
     <div class="portlet_content"> 
         <table border="0" cellpadding="0" cellspacing="0">
@@ -38,14 +38,40 @@
                   </tr>
                  </thead>
                  <tbody>
+             <% @folders.each do |folder| %>
+                <tr>
+                 
+                 <td colspan="2" align="CENTER"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br />
+                 <div class="foldericon_32"><img src="/tog_depot/images/tog-depot_iconfolder_32px.gif" border="0" /></div>                 </td>
+                <td colspan="2">
+								 <h3><%= link_to folder.title, depot_filefolder_url(folder.id) %></h3>                  </td>
+                  <td colspan="2"><%= folder.created_at %></td>
+                  <td colspan="2"><%= folder.user.login %></td>
+                  <td style="padding-right:20px;" align="right" colspan="2"></td>
+                  <td colspan="2"> </td>
+                  </tr>
+                  <tr><td class="brd_bt" colspan="2"></td><td class="end_list" colspan="12">
+                  
+                  <% tags = folder.tag_list %>
+                  <b>Tags:</b>
+                  <% if !tags.blank? %>
+                    <% for tag in tags %>
+                      <%= link_to tag, tag_depot_files_path(tag.to_sym) %>
+                    <% end %>
+                  <% else %>
+                    No tags.
+                  <% end %>
+	               </td>
+               </tr>
+             <% end %>
           <% if @files.empty? %>
-            <tr><td>There isn't any files yet.
+            <tr><td colspan="12">There isn't any files yet.
           <% else %>
              <% @files.each do |file| %>
                 <tr>
                  
                  <td colspan="2" align="CENTER"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br />
-                  <div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br />EXT</div>                 </td>
+                  <div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br /><%= file.filename.to_s.scan(/\.\w+$/) %></div>                 </td>
                  <td colspan="2">
 								 <h3><%= link_to file.title, depot_file_path(file.id) %></h3>                  </td>
                   <td colspan="2"><%= file.created_at %></td>
@@ -63,7 +89,7 @@
                   <b>Tags:</b>
                   <% if !tags.blank? %>
                     <% for tag in tags %>
-                      <%= link_to tag, tags_depot_files_url(:tag => tag, :user => file.user_id) %>
+                      <%= link_to tag, tag_depot_files_path(tag.to_sym) %>
                     <% end %>
                   <% else %>
                     No tags.
