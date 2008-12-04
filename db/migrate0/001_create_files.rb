@@ -3,12 +3,7 @@ class CreateFiles < ActiveRecord::Migration
     create_table :files do |t|
       t.string  :title
       t.text    :description
-      t.integer :user_id
-			t.string  :filename
-			t.integer :size
-			t.string  :state
-			t.integer :filefolder_id
-			t.integer :num_download
+      t.integer :author_id
 
       t.timestamps
     end
