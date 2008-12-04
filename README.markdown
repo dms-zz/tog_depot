@@ -64,7 +64,7 @@ with the following content:
 <pre>
 class InstallTogDepot < ActiveRecord::Migration
   def self.up
-    migrate_plugin "tog_depot", 1
+    migrate_plugin "tog_depot", 2
   end
 
   def self.down
