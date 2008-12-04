@@ -1,5 +1,8 @@
 require_plugin 'tog_core'
 require_plugin 'seo_urls'
+require_plugin 'attachment_fu'
+require_plugin 'acts_as_rateable'
+require_plugin 'acts_as_taggable_on_steroids'
 
 Tog::Interface.sections(:site).add "Files", "/depot/files"     
 
