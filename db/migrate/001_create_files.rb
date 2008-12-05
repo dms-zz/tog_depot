@@ -8,7 +8,7 @@ class CreateFiles < ActiveRecord::Migration
 			t.integer :size
 			t.string  :state
 			t.integer :filefolder_id
-			t.integer :num_download
+			t.integer :num_download, :default => 0
 
       t.timestamps
     end

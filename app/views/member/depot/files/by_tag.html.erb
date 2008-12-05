@@ -1,13 +1,6 @@
 <% include_stylesheet "/tog_depot/stylesheets/depot" %>
 <% content_for :sidebar do %>
-<ul class="tags">
-<li class="l5">
-<%= link_to 'Change visibility' %>
-</li>
-<li class="l5">
-<%= link_to 'Delete' %>
-</li>
-</ul>
+
 <% end %>
 
 
@@ -20,37 +13,36 @@
         <table border="0" cellpadding="0" cellspacing="0">
                  <thead>
                   <tr bgcolor="#eeeeee">
-                   <th rowspan="2"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="4"/>Sel.</th>
-                   <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
+                   <th><img src="/tog_depot/images/tog-depot_arrow_up_deact.gif" border="0" /><br /></th>
                    <th rowspan="2">Type</th>
-                   <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
+                   <th><a href="<%= member_depot_files_order_path('title ASC') %>"><img src="/tog_depot/images/tog-depot_arrow_up.gif" border="0" /></a><br /></th>
                    <th rowspan="2">Filename</th>
-                   <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
+                   <th><a href="<%= member_depot_files_order_path('created_at ASC') %>"><img src="/tog_depot/images/tog-depot_arrow_up.gif" border="0" /></a><br /></th>
                    <th rowspan="2">Release date</th>
-                   <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
+                   <th><img src="/tog_depot/images/tog-depot_arrow_up_deact.gif" border="0" /><br /></th>
                    <th rowspan="2">Owner</th>
-                   <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
+                   <th><a href="<%= member_depot_files_order_path('num_download ASC') %>"><img src="/tog_depot/images/tog-depot_arrow_up.gif" border="0" /></a><br /></th>
                    <th rowspan="2">Times dl.</th>
-                   <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
+                   <th><img src="/tog_depot/images/tog-depot_arrow_up_deact.gif" border="0" /><br /></th>
                    <th rowspan="2">In folder</th>
-                   <th><img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br /></th>
+                   <th><a href="<%= member_depot_files_order_path('state ASC') %>"><img src="/tog_depot/images/tog-depot_arrow_up.gif" border="0" /></a><br /></th>
                    <th rowspan="2">Vis.</th>
                   </tr>
                   <tr bgcolor="#eeeeee">
-                    <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th bgcolor="#eeeeee"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
+                    <th bgcolor="#eeeeee"><img src="/tog_depot/images/tog-depot_arrow_dn_deact.gif" border="0" /></th>
+                    <th bgcolor="#eeeeee"><a href="<%= member_depot_files_order_path('title DESC') %>"><img src="/tog_depot/images/tog-depot_arrow_dn.gif" border="0" /></a></th>
+                    <th bgcolor="#eeeeee"><a href="<%= member_depot_files_order_path('created_at DESC') %>"><img src="/tog_depot/images/tog-depot_arrow_dn.gif" border="0" /></a></th>
+                    <th bgcolor="#eeeeee"><img src="/tog_depot/images/tog-depot_arrow_dn_deact.gif" border="0" /></th>
+                    <th bgcolor="#eeeeee"><img src="/tog_depot/images/tog-depot_arrow_dn.gif" border="0" /></th>
+                    <th bgcolor="#eeeeee"><img src="/tog_depot/images/tog-depot_arrow_dn_deact.gif" border="0" /></th>
+                    <th bgcolor="#eeeeee"><a href="<%= member_depot_files_order_path('state DESC') %>"><img src="/tog_depot/images/tog-depot_arrow_dn.gif" border="0" /></a></th>
                   </tr>
                  </thead>
                  <tbody>
                  
              <% @my_folders.each do |folder| %>
                 <tr>
-                 <td><input type="checkbox" /></td>
+                 
                  <td colspan="2"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br />
                  <div class="foldericon_32"><img src="/tog_depot/images/tog-depot_iconfolder_32px.gif" border="0" /><br /></div>
                  </td>
@@ -63,7 +55,7 @@
                   <td colspan="2"> </td>
                   <td colspan="2"><img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file"/></td>
                   </tr>
-                  <tr><td class="brd_bt" colspan="3"></td><td class="end_list" colspan="12">
+                  <tr><td class="brd_bt" colspan="2"></td><td class="end_list" colspan="12">
                   
                   <% tags = folder.tag_list %>
                   <b>Tags:</b>
@@ -79,13 +71,13 @@
              <% end %>
 
           <% if @my_files.empty? %>
-            <tr><td  colspan="12">There isn't any files yet.
+            <tr><td  colspan="14">There isn't any files yet.
                </td>
             </tr>
           <% else %>
              <% @my_files.each do |file| %>
                 <tr>
-                 <td><input type="checkbox" /></td>
+                 
                  <td colspan="2"><img src="/tog_depot/images/1px.gif" border="0" height="4" width="5"/><br />
                  <div class="fileicon_32"><img src="/tog_depot/images/1px.gif" border="0" height="14" width="5"/><br /><%= file.filename.to_s.scan(/\.\w+$/) %></div>
                  </td>
@@ -94,7 +86,7 @@
                   </td>
                   <td colspan="2"><%= file.created_at %></td>
                   <td colspan="2"><%= file.user.login %></td>
-                  <td style="padding-right:20px;" align="right" colspan="2">56</td>
+                  <td style="padding-right:20px;" align="right" colspan="2"><%= file.num_download %></td>
                   <td colspan="2">
 										<% if file.filefolder%>
 										<%= file.filefolder.title %>
@@ -102,7 +94,7 @@
                     </td>
                   <td colspan="2"><img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file"/></td>
                   </tr>
-                  <tr><td class="brd_bt" colspan="3"></td><td class="end_list" colspan="12">
+                  <tr><td class="brd_bt" colspan="2"></td><td class="end_list" colspan="12">
                   
                   <% tags = file.tag_list %>
                   <b>Tags:</b>
@@ -121,5 +113,6 @@
         </table>
             
 </div><br />
-<div class="info_results" style="width:688px;"><div class="floater_L" style="float:left;">328 file(s)</div><div class="floater_R" style="float:right; padding-right:4px;"><img src="/tog_core/images/ico/arrow-left-blue-small.gif" border="0" /> Showing 1 / 290 <img src="/tog_core/images/ico/arrow-right-blue-small.gif" border="0" /></div><div class="float_breaker" style="clear:both;"></div></div>
+<div class="info_results" style="width:688px;">
+  <div class="floater_R" style="float:right; padding-right:4px;"><%= will_paginate @my_files %></div><div class="float_breaker" style="clear:both;"></div></div>
     </div>

@@ -1,13 +1,20 @@
 class Member::Depot::FilesController < Member::BaseController
  
   def index
-    @my_files = current_user.files.paginate(:page => params[:page], :order => "created_at DESC")
-    @my_folders = current_user.filefolders.paginate(:page => params[:page], :order => "created_at DESC")
+    if params[:order]
+      @order = params[:order]
+    else 
+      @order = "created_at DESC"
+    end
+    @my_files = current_user.files.paginate(:per_page => 10, :page => params[:page], :order => @order)
+    @my_folders = current_user.filefolders.paginate(:page => params[:page], :order => @order)
+		@tot_size = current_user.files.sum('size').to_i / 1024
+		@max_storage = Tog::Plugins.settings(:tog_depot, "file.max_size_storage")
   end
- 
+
   def by_tag
     @tag  =  Tag.find_by_name(params[:tag_name])
-    @my_files = current_user.files.find_tagged_with(@tag) unless @tag.nil?
+    @my_files = current_user.files.find_tagged_with(@tag).paginate(:per_page => 10, :page => params[:page]) unless @tag.nil?
     @my_folders = current_user.filefolders.find_tagged_with(@tag) unless @tag.nil?
   end
 
@@ -17,6 +24,12 @@ class Member::Depot::FilesController < Member::BaseController
   end
  
   def new
+		@tot_size = current_user.files.sum('size').to_i / 1024
+		@max_storage = Tog::Plugins.settings(:tog_depot, "file.max_size_storage")
+		if (@max_storage.to_i - @tot_size.to_i)<0
+       flash[:error] = 'Your disk quota has been exceeded, please contact your administrator.'
+       redirect_to member_depot_files_path
+		end
     @folders = current_user.filefolders.paginate(:page => params[:page], :order => "created_at DESC")
   end
  
@@ -65,5 +78,24 @@ class Member::Depot::FilesController < Member::BaseController
       end
     end
   end
- 
+
+  def download
+    @file = current_user.files.find params[:id]
+    @num = @file.num_download+1
+    @file.update_attribute (:num_download, @num)
+    send_file("public/" + @file.public_filename)
+  end
+	
+  def destroy
+    @file = current_user.files.find params[:id]
+    @file.destroy
+    respond_to do |wants|
+      wants.html do
+        flash[:ok]='File deleted.'
+        redirect_to member_depot_files_path
+      end
+    end
+    
+  end
+
 end

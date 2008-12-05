@@ -8,7 +8,7 @@ class Depot::FilefoldersController < ApplicationController
 
   def show
     @folder = Depot::Filefolder.find params[:id]
-    @my_files = Depot::File.paginate(:page => params[:page], :order => "created_at DESC", :conditions => ["filefolder_id=? and state=?", params[:id], 'published'])
+    @my_files = Depot::File.paginate(:per_page => 10, :page => params[:page], :order => "created_at DESC", :conditions => ["filefolder_id=? and state=?", params[:id], 'published'])
   end
 
 end

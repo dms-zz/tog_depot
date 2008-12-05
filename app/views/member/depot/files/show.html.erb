@@ -11,7 +11,7 @@
 <%= link_to 'Change visibility', edit_member_depot_file_url(@file.id) %>
 </li>
 <li class="l5">
-<%= link_to 'Delete', edit_member_depot_file_url(@file.id) %>
+<%= link_to 'Delete', member_depot_file_url(@file.id), :method => :delete %>
 </li>
 </ul>
 <% end %>
@@ -42,17 +42,17 @@
    <b>Updated:</b> <%= @file.updated_at %><br />
    <b>Size:</b> 
 	 <%if @file.size%>
-	 <%= @file.size / 1024 %> Mb. (<%= @file.size %> Bytes)
+	 <%= @file.size / 1024 %> Kb. (<%= @file.size %> Bytes)
    <%end%>
    <br />
    <b>Owner:</b> <%= @file.user.login %><br />   
-   <b>Times downloaded:</b><br />
+   <b>Times downloaded:</b> <%= @file.num_download %><br />
    <b>Parent folder:</b> 
 	 	<%if @file.filefolder%>
 		<%= link_to @file.filefolder.title, member_depot_filefolder_url(@file.filefolder.id) %>
     <%end%>
    <br />
-   <b>Visibility:<%= @file.state %></b>
+   <b>Visibility: <%= @file.state %></b>
   </p>
   <p>
    <b>Description:</b>
@@ -62,11 +62,11 @@
  </div>
  
   <div class="floater_L" style="float:left;">
-  <a href=" <%= @file.public_filename %> "><img src="/tog_depot/images/tog-depot_file_dl.gif" border="0" /></a></div>
+  <a href=" <%= member_depot_files_download_path %> "><img src="/tog_depot/images/tog-depot_file_dl.gif" border="0" /></a></div>
   <div style="float:left; padding-left:8px;"><h2 class="no_margins" style="padding:0px; border:0px; margin:0px;">
-	<%= link_to "Download file",  @file.public_filename %></h2>
+	<%= link_to "Download file",  member_depot_files_download_path %></h2>
   
-	<%= link_to "Report abuse",  report_abuse_link(@comment, 'Report abuse', :class => 'abuse_link') %>
+	 <%= report_abuse_link(@file, 'Report abuse', :class => 'abuse_link') -%>
   
   </div>
   <div style="clear:both;" class="float_breaker"></div><br />

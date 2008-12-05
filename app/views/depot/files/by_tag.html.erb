@@ -10,31 +10,31 @@
                   <tr bgcolor="#eeeeee">
                    
                    <th width="10" height="8" align="left" valign="MIDDLE">
-                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                     <img src="/tog_depot/images/tog-depot_arrow_up_deact.gif" border="0" /><br />                     </th>
                    <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;Type</th>
                    <th width="10" height="8" align="left" valign="MIDDLE">
-                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                     <a href="<%= depot_files_order_path('title ASC') %>"><img src="/tog_depot/images/tog-depot_arrow_up.gif" border="0" /></a><br />                     </th>
                    <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;Filename</th>
                    <th width="10" height="8" align="left" valign="MIDDLE">
-                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                     <a href="<%= depot_files_order_path('created_at ASC') %>"><img src="/tog_depot/images/tog-depot_arrow_up.gif" border="0" /></a><br />                     </th>
                    <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;Release date</th>
                    <th width="10" height="8" align="left" valign="MIDDLE">
-                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                     <img src="/tog_depot/images/tog-depot_arrow_up_deact.gif" border="0" /><br />                     </th>
                    <th height="16" rowspan="2" align="left" valign="MIDDLE">&nbsp; Owner</th>
                    <th width="10" height="8" align="left" valign="MIDDLE">
-                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                     <img src="/tog_depot/images/tog-depot_arrow_up_deact.gif" border="0" /><br />                     </th>
                    <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;Times dl.</th>
                    <th width="10" height="8" align="left" valign="MIDDLE">
-                     <img src="/tog_core/images/ico/arrow-up.gif" border="0" /><br />                     </th>
+                     <img src="/tog_depot/images/tog-depot_arrow_up_deact.gif" border="0" /><br />                     </th>
                    <th height="16" rowspan="2" align="left" valign="MIDDLE"> &nbsp;In folder</th>
         </tr>
                   <tr bgcolor="#eeeeee">
-                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
-                    <th height="8" align="left" valign="MIDDLE"><img src="/tog_core/images/ico/arrow-down.gif" border="0" /></th>
+                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_depot/images/tog-depot_arrow_dn_deact.gif" border="0" /></th>
+                    <th width="10" height="8" align="left" valign="MIDDLE"><a href="<%= depot_files_order_path('title DESC') %>"><img src="/tog_depot/images/tog-depot_arrow_dn.gif" border="0" /></a></th>
+                    <th width="10" height="8" align="left" valign="MIDDLE"><a href="<%= depot_files_order_path('created_at DESC') %>"><img src="/tog_depot/images/tog-depot_arrow_dn.gif" border="0" /></a></th>
+                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_depot/images/tog-depot_arrow_dn_deact.gif" border="0" /></th>
+                    <th width="10" height="8" align="left" valign="MIDDLE"><img src="/tog_depot/images/tog-depot_arrow_dn_deact.gif" border="0" /></th>
+                    <th height="8" align="left" valign="MIDDLE"><img src="/tog_depot/images/tog-depot_arrow_dn_deact.gif" border="0" /></th>
                   </tr>
                  </thead>
                  <tbody>
@@ -76,7 +76,7 @@
 								 <h3><%= link_to file.title, depot_file_path(file.id) %></h3>                  </td>
                   <td colspan="2"><%= file.created_at %></td>
                   <td colspan="2"><%= file.user.login%></td>
-                  <td style="padding-right:26px;" align="right" colspan="2">56</td>
+                  <td style="padding-right:26px;" align="right" colspan="2"><%= file.num_download %></td>
                   <td colspan="2">
 										<% if file.filefolder%>
 										<%= file.filefolder.title %>
@@ -102,7 +102,8 @@
         </table>
             
 </div><br />
-<div class="info_results" style="width:688px;"><div class="floater_L" style="float:left;">328 file(s)</div><div class="floater_R" style="float:right; padding-right:4px;"><img src="/tog_core/images/ico/arrow-left-blue-small.gif" border="0" /> Showing 1 / 290 <img src="/tog_core/images/ico/arrow-right-blue-small.gif" border="0" /></div><div class="float_breaker" style="clear:both;"></div></div>
+<div class="info_results" style="width:688px;">
+  <div class="floater_R" style="float:right; padding-right:4px;"><%= will_paginate @my_files %></div><div class="float_breaker" style="clear:both;"></div></div>
     </div>
 
 

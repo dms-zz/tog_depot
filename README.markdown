@@ -51,7 +51,7 @@ rake tog:plugins:copy_resources
 ruby script/generate migration install_tog_depot
 </pre>
 
-   With the following content:
+* With the following content:
 <pre>
 class InstallTogDepot < ActiveRecord::Migration
   def self.up
