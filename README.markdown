@@ -44,7 +44,9 @@ Install
 <pre>ruby script/generate migration install_tog_depot</pre>
 
 with the following content:
-<pre>class InstallTogDepot < ActiveRecord::Migration
+
+<pre>
+class InstallTogDepot < ActiveRecord::Migration
   def self.up
     migrate_plugin "tog_depot", 2
   end
