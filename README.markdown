@@ -32,20 +32,27 @@ Install
 -------
 
 * Install plugin form source:
-<pre>ruby script/plugin install git://github.com/dms/tog_depot.git</pre>
+<pre>
+ruby script/plugin install git://github.com/dms/tog_depot.git
+</pre>
 
 * Add Depot's routes to your application's config/routes.rb
-<pre>map.routes_from_plugin 'tog_depot'</pre>
+<pre>
+map.routes_from_plugin 'tog_depot'
+</pre>
 
 * Add plugin static resources to public app:
-<pre>rake tog:plugins:copy_resources</pre>
+<pre>
+rake tog:plugins:copy_resources
+</pre>
 
 * Generate installation migration:
-<pre>ruby script/generate migration install_tog_depot</pre>
+<pre>
+ruby script/generate migration install_tog_depot
+</pre>
 
-   with the following content:
-
-   <pre>
+   With the following content:
+<pre>
 class InstallTogDepot < ActiveRecord::Migration
   def self.up
     migrate_plugin "tog_depot", 2

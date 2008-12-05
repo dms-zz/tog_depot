@@ -5,6 +5,12 @@ class Member::Depot::FilesController < Member::BaseController
     @my_folders = current_user.filefolders.paginate(:page => params[:page], :order => "created_at DESC")
   end
  
+  def by_tag
+    @tag  =  Tag.find_by_name(params[:tag_name])
+    @my_files = current_user.files.find_tagged_with(@tag) unless @tag.nil?
+    @my_folders = current_user.filefolders.find_tagged_with(@tag) unless @tag.nil?
+  end
+
   def show
     @file = current_user.files.find(params[:id])
     @extension = @file.filename.to_s.scan(/\.\w+$/)
