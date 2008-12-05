@@ -3,11 +3,6 @@ Depot
 
 File management system for TOG:Community framework.
 
-WORK IN PROGRESS!
-----------------
-
-This plugin is still under development, so please don't use it in a production environment.
-
 Included functionality
 ---------------------- 
 
@@ -37,33 +32,19 @@ Install
 -------
 
 * Install plugin form source:
-
-<pre>
-ruby script/plugin install git://github.com/dms/tog_depot.git
-</pre>
+<pre>ruby script/plugin install git://github.com/dms/tog_depot.git</pre>
 
 * Add Depot's routes to your application's config/routes.rb
-
-<pre>
-map.routes_from_plugin 'tog_depot'
-</pre>
+<pre>map.routes_from_plugin 'tog_depot'</pre>
 
 * Add plugin static resources to public app:
-
-<pre>
-rake tog:plugins:copy_resources
-</pre>
+<pre>rake tog:plugins:copy_resources</pre>
 
 * Generate installation migration:
-
-<pre>
-ruby script/generate migration install_tog_depot
-</pre>
+<pre>ruby script/generate migration install_tog_depot</pre>
 
 with the following content:
-
-<pre>
-class InstallTogDepot < ActiveRecord::Migration
+<pre>class InstallTogDepot < ActiveRecord::Migration
   def self.up
     migrate_plugin "tog_depot", 2
   end
@@ -75,10 +56,7 @@ end
 </pre>
 
 * And finally...
-
-<pre> 
-rake db:migrate
-</pre> 
+<pre>rake db:migrate</pre> 
 
 
 More
@@ -86,4 +64,5 @@ More
 Released under the MIT license
 
 [http://dmsti.es](http://dmsti.es)
+
 DMS 2008, Desarrollo de Medios y Sistemas. 
