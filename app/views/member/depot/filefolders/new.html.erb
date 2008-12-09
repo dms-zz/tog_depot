@@ -9,10 +9,9 @@
       <p><label for="folder_tag_list">Tags (separated with ,)</label><%= f.text_field :tag_list, :class=>"fieldbox wide" -%></p>
       <p>
         <label for="folder_state">Visibility</label>
-        <%= select_tag "state", options_for_select(Depot::Filefolder.states, :draft) -%></p>
+   			<%= select_tag "state", options_for_select(Depot::Filefolder.states, :private) -%>
       <p>
-        <label for="folder_description">Description</label><%= f.text_area :description, :class=>"fieldbox wide" %></p>
-     
+        <label for="folder_description">Description</label><%= f.text_area :description, :class=>"fieldbox wide" %></p>    
     </div>
   </fieldset>
   <div class="actions"><%= link_to '&lt;&lt; Back to filelist',  member_depot_files_path, :class => 'button mainaction' %>

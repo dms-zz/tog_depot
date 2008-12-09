@@ -55,7 +55,13 @@
                   <td colspan="2"><%= folder.user.login %></td>
                   <td style="padding-right:20px;" align="right" colspan="2"></td>
                   <td colspan="2"> </td>
-                  <td colspan="2"><img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file"/></td>
+                  <td colspan="2">
+										<% if folder.state=='public'%>
+                      <img src="/tog_depot/images/privacity/public_domain.gif" border="0" alt="Public file" title="Public file" />
+                    <%else%>
+                      <img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file" title="Member file"/>
+                    <%end%>
+                  </td>
                   </tr>
                   <tr><td class="brd_bt" colspan="2"></td><td class="end_list" colspan="12">
                   
@@ -95,7 +101,7 @@
                     <%end%>
                     </td>
                   <td colspan="2">
-										<% if file.state=='published'%>
+										<% if file.state=='public'%>
                       <img src="/tog_depot/images/privacity/public_domain.gif" border="0" alt="Public file" title="Public file" />
                     <%else%>
                       <img src="/tog_depot/images/privacity/member.gif" border="0" alt="Member file" title="Member file"/>

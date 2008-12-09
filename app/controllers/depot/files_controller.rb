@@ -8,8 +8,8 @@ class Depot::FilesController < ApplicationController
     else 
       @order = "created_at DESC"
     end
-    @files = Depot::File.paginate(:per_page => 10, :page => params[:page], :order => @order,  :conditions => ['state = ?', 'published'])
-    @folders = Depot::Filefolder.paginate(:page => params[:page], :order => @order)
+    @files = Depot::File.paginate(:per_page => 10, :page => params[:page], :order => @order, :conditions => ['state = ?', 'public'])
+    @folders = Depot::Filefolder.paginate(:page => params[:page], :conditions => ['state = ?', 'public'], :order => @order)
   end
 
   def show
@@ -20,8 +20,8 @@ class Depot::FilesController < ApplicationController
 
   def by_tag
     @tag  =  Tag.find_by_name(params[:tag_name])
-    @files = Depot::File.find_tagged_with(@tag, :conditions => ['state=?', "published"]).paginate(:per_page => 10, :page => params[:page]) unless @tag.nil?
-    @folders = Depot::Filefolder.find_tagged_with(@tag) unless @tag.nil?
+    @files = Depot::File.find_tagged_with(@tag, :conditions => ['state=?', "public"]).paginate(:per_page => 10, :page => params[:page]) unless @tag.nil?
+    @folders = Depot::Filefolder.find_tagged_with(@tag, :conditions => ['state=?', "public"]) unless @tag.nil?
   end
 
   def download

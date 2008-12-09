@@ -8,8 +8,10 @@
         <label for="folder_title">Title</label><%= f.text_field :title, :class=>"fieldbox wide" %></p>
       <p><label for="folder_tag_list">Tags (separated with ,)</label><%= f.text_field :tag_list, :class=>"fieldbox wide" -%></p>
       <p>
-        <label for="folder_state">Visibility</label>
-        <%= select_tag "state", options_for_select(Depot::Filefolder.states, :draft) -%></p>
+        <label for="folder_state">Visibility 
+        </label>
+        <%= select_tag "state", options_for_select(Depot::Filefolder.states, @filefolder.current_state) -%>
+        <br>(Changing folder privacity will affect all files into folder)</p>
       <p>
         <label for="folder_description">Description</label><%= f.text_area :description, :class=>"fieldbox wide" %></p>
      

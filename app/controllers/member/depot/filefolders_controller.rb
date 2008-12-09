@@ -9,22 +9,33 @@ class Member::Depot::FilefoldersController < Member::BaseController
   end
  
   def create
-    @folder = current_user.filefolders.new(params[:folder])
-    if @folder.save!
-			flash[:ok] = "Folder created successfully"
-			redirect_to member_depot_files_path
-		else
-			redirect_to member_depot_files_path
-		end
- 
+    @filefolder = current_user.filefolders.new(params[:folder])
+		@filefolder.user_id = current_user.id
+		
+		@filefolder.state = 'public'
+    
+		respond_to do |wants|
+			if @filefolder.save
+        wants.html do
+					flash[:ok] = "Folder <b>#{@filefolder.title}</b> created successfully  -#{params[:state]} -#{@filefolder.state}"
+					redirect_to member_depot_files_path
+        end
+			else
+        wants.html do
+					redirect_to member_depot_files_path
+        end
+			end
+    end
   end
- 
+
+
   def edit
     @filefolder = current_user.filefolders.find(params[:id])
   end
 
   def update
     @filefolder = current_user.filefolders.find(params[:id])
+		@filefolder.state = params[:state]
     respond_to do |wants|
       if @filefolder.update_attributes(params[:filefolder])
          wants.html do

@@ -5,17 +5,17 @@ class Depot::Filefolder < ActiveRecord::Base
   has_many :files
   validates_presence_of :title
 
-  acts_as_state_machine :initial => :draft
+  acts_as_state_machine :initial => :public, :column => 'state'
 
-  state :draft
-  state :published
+  state :private
+  state :public
 
-  event :published do
-    transitions :from => [:draft] , :to => :published
+  event :public do
+    transitions :from => [:private] , :to => :public
   end
 
-  event :draft do
-    transitions :from => [:published] , :to => :draft
+  event :private do
+    transitions :from => [:public] , :to => :private
   end
 
 end

@@ -15,21 +15,21 @@ class Depot::File < ActiveRecord::Base
                  :path_prefix=>'public/system/files'
   validates_as_attachment
 
-  attr_accessible :title, :description, :filefolder_id, :tag_list, :published
+  attr_accessible :title, :description, :filefolder_id, :tag_list, :publiC
 
   validates_presence_of :title
 
-  acts_as_state_machine :initial => :draft
+  acts_as_state_machine :initial => :private
 
-  state :draft
-  state :published
+  state :private
+  state :public
 
-  event :published do
-    transitions :from => [:draft] , :to => :published
+  event :public do
+    transitions :from => [:private] , :to => :public
   end
 
-  event :draft do
-    transitions :from => [:published] , :to => :draft
+  event :private do
+    transitions :from => [:public] , :to => :private
   end
 
 
