@@ -57,7 +57,6 @@ class InstallTogDepot < ActiveRecord::Migration
   def self.up
     migrate_plugin "tog_depot", 2
   end
-
   def self.down
     migrate_plugin "tog_depot", 0
   end
