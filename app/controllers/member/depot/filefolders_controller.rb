@@ -11,9 +11,6 @@ class Member::Depot::FilefoldersController < Member::BaseController
   def create
     @filefolder = current_user.filefolders.new(params[:folder])
 		@filefolder.user_id = current_user.id
-		
-		@filefolder.state = 'public'
-    
 		respond_to do |wants|
 			if @filefolder.save
         wants.html do
