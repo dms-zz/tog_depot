@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
   s.name     = "tog_depot"
-  s.version  = "0.1.0"
+  s.version  = "0.2.1"
   s.date     = "2008-12-10"
   s.summary  = "Tog Plugin"
   s.email    = "jorge.fernandez@dmsti.es"
   s.homepage = "http://github.com/dms/tog_depot/tree/master"
   s.description = "Depot is a file management system for Tog:Community Framework"
   s.has_rdoc = true
-  s.authors  = ["Ignacio Vega", "Jorge Fernandez"]
+  s.authors  = ["Ignacio Vega", "Jorge F. Simarro"]
   s.files    = ["CHANGELOG.md", 
 		"MIT-LICENSE",
 		"init.rb",
