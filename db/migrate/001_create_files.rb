@@ -6,6 +6,7 @@ class CreateFiles < ActiveRecord::Migration
       t.integer :user_id
 			t.string  :filename
 			t.integer :size
+			t.string  :content_type
 			t.string  :state
 			t.integer :filefolder_id
 			t.integer :num_download, :default => 0

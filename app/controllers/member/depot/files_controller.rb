@@ -36,6 +36,7 @@ class Member::Depot::FilesController < Member::BaseController
   def create
     @file = current_user.files.new(params[:file])
     @file.user_id = current_user.id
+		@file.num_download=0
  
     respond_to do |wants|
       if @file.save

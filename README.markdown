@@ -25,6 +25,8 @@ In case you haven't got any of them installed previously, you'll need the follow
 * [acts\_as\_commentable](https://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_commentable)
 * [attachment\_fu](http://github.com/technoweenie/attachment_fu/tree/master)
 * [acts\_as\_taggable\_on\_steroids](https://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_taggable_on_steroids)
+* [acts\_as\_rateable](http://github.com/tog/tog/wikis/3rd-party-plugins-acts_as_rateable)
+* [seo\_urls](http://github.com/tog/tog/wikis/3rd-party-plugins-seo_urls)
 
 Follow each link above for a short installation guide incase you have to install them.
 
@@ -54,12 +56,12 @@ ruby script/generate migration install_tog_depot
 * With the following content:
 <pre>
 class InstallTogDepot < ActiveRecord::Migration
-  def self.up
-    migrate_plugin "tog_depot", 2
-  end
-  def self.down
-    migrate_plugin "tog_depot", 0
-  end
+   def self.up
+      migrate_plugin "tog_depot", 2
+   end
+   def self.down
+      migrate_plugin "tog_depot", 0
+   end
 end
 </pre>
 

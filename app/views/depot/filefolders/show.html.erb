@@ -1,7 +1,5 @@
 <% include_stylesheet "/tog_depot/stylesheets/depot" %>
 
-
-
 <h1><img src="/tog_depot/images/tog-depot_iconfolder_48px.gif" border="0" alt="Member file"/> <%= @folder.title%></h1>
 <b>Tags:</b>
 	<% tags = @folder.tag_list %>
@@ -68,7 +66,8 @@
                   <td colspan="2">
 										<% if file.filefolder%>
 										<%= file.filefolder.title %>
-                    <%end%>                  </td>
+                    <%end%>
+                  </td>
                   </tr>
                   <tr><td class="brd_bt" colspan="2"></td><td class="end_list" colspan="12">
                   

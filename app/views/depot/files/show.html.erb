@@ -36,7 +36,11 @@
    <b>Times downloaded:</b> <%= @file.num_download %><br />
    <b>Parent folder:</b> 
 	 	<%if @file.filefolder%>
-		<%= link_to @file.filefolder.title, member_depot_filefolder_url(@file.filefolder.id) %>
+			<%if @file.filefolder.state== 'public'%>
+				<%= link_to @file.filefolder.title, depot_filefolder_url(@file.filefolder.id) %>
+      <%else%>
+      	<%=@file.filefolder.title%> (private)
+      <%end%>
     <%end%>
    <br />
    <b>Visibility: <%= @file.state %></b>

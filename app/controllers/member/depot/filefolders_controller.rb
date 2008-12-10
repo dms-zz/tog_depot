@@ -11,10 +11,13 @@ class Member::Depot::FilefoldersController < Member::BaseController
   def create
     @filefolder = current_user.filefolders.new(params[:folder])
 		@filefolder.user_id = current_user.id
+		
+		@filefolder.state = 'public'
+    
 		respond_to do |wants|
 			if @filefolder.save
         wants.html do
-					flash[:ok] = "Folder <b>#{@filefolder.title}</b> created successfully  -#{params[:state]} -#{@filefolder.state}"
+					flash[:ok] = "Folder <b>#{@filefolder.title}</b> created successfully"
 					redirect_to member_depot_files_path
         end
 			else
@@ -32,11 +35,21 @@ class Member::Depot::FilefoldersController < Member::BaseController
 
   def update
     @filefolder = current_user.filefolders.find(params[:id])
+		@old_state=@filefolder.state
+		@new_state = params[:state]
+		
 		@filefolder.state = params[:state]
+		
     respond_to do |wants|
       if @filefolder.update_attributes(params[:filefolder])
          wants.html do
+					if @old_state!=@new_state
+						@files = current_user.files.find(:all, :conditions => ["filefolder_id=?",params[:id]])
+						@files.each {|c| c.update_attribute 'state', params[:state]}
+	          flash[:ok] = "Folder <b>#{@filefolder.title}</b> and files into it succcessfully updated!"
+					else
           flash[:ok] = "Folder <b>#{@filefolder.title}</b> succcessfully updated!"
+					end
           redirect_to member_depot_files_path
         end
       else

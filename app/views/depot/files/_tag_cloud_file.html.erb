@@ -1,4 +1,4 @@
-<strong>Tags</strong>
+<strong>Tags Cloud</strong>
 <ul class="tags">
   <% tag_cloud_files(%w(l1 l2 l3 l4 l5)) do |tag, css_class| %>
      <li class="<%= css_class -%>"><%= link_to tag.name, tag_depot_files_path(tag.name.to_sym) %></li>

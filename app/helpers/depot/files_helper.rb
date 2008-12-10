@@ -2,7 +2,9 @@ module Depot
   module FilesHelper
 
     def tag_cloud_files(classes)
-      tags = Depot::File.tag_counts(:conditions => ["files.state='public'"])
+      tags1 = Depot::File.tag_counts(:conditions => ["files.state='public'"])
+			tags2 = Depot::Filefolder.tag_counts(:conditions => ["state='public'"])
+			tags= tags1 + tags2
       return if tags.empty?
       max_count = tags.sort_by(&:count).last.count.to_f
       tags.each do |tag|
