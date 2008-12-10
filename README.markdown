@@ -88,4 +88,4 @@ Released under the MIT license
 
 [http://dmsti.es](http://dmsti.es)
 
-DMS 2008, Desarrollo de Medios y Sistemas. 
+DMS, Desarrollo de Medios y Sistemas. 
