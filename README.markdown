@@ -30,8 +30,21 @@ In case you haven't got any of them installed previously, you'll need the follow
 
 Follow each link above for a short installation guide incase you have to install them.
 
-Install
--------
+Installing plugin as a gem
+--------------------------
+
+* Run the following if you haven't already:
+<pre>
+gem sources -a http://gems.github.com
+</pre>
+
+* Install the gem:
+<pre>
+sudo gem install dms-tog_depot
+</pre>
+
+Installing plugin from source
+-----------------------------
 
 * Install plugin form source:
 <pre>
